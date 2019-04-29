@@ -278,7 +278,17 @@
           url: '',
           closeButtonRequire: true,
           clickToSelect: true,
-          onClick: null
+          onClick: null,
+          
+          // Allow specification of transform
+          height: 0, // origin height once placed into the container
+          width: 0, // origin width once placed into the container
+          centerPoint: {x: 0, y: 0},
+          transform: {
+            translate: {x: 0, y: 0},
+            rotation: 0,
+            scale: 1
+          }
         };
 
         if(typeof url == 'string') {
@@ -336,14 +346,10 @@
               $imgWrapper: null,
               $removeIcon: null,
               order: this.images.length + 1, // starts from 1
-              height: 0, // origin height once placed into the container
-              width: 0, // origin width once placed into the container
-              centerPoint: {x: 0, y: 0},
-              transform: {
-                translate: {x: 0, y: 0},
-                rotation: 0,
-                scale: 1
-              }
+              height: url.height, // origin height once placed into the container
+              width: url.width, // origin width once placed into the container
+              centerPoint: url.centerPoint,
+              transform: url.transform
             };
 
         this.images.push(image);
@@ -398,14 +404,10 @@
             $imgWrapper: null,
             $removeIcon: null,
             order: index + 1, // starts from 1
-            height: 0, // origin height once placed into the container
-            width: 0, // origin width once placed into the container
-            centerPoint: {x: 0, y: 0},
-            transform: {
-              translate: {x: 0, y: 0},
-              rotation: 0,
-              scale: 1
-            }
+            height: url.height, // origin height once placed into the container
+            width: url.width, // origin width once placed into the container
+            centerPoint: url.centerPoint,
+            transform: url.transform
           };
 
           image.$imgWrapper = $('<span>').append($(this));
